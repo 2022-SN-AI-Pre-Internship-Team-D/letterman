@@ -43,8 +43,7 @@ services:
     environment:
       - REACT_APP_BACKEND_URL=http://localhost:8000
     volumes:
-      - ./frontend/:/frontend
-      - build_folder:/frontend/build
-      - ./frontend/node_modules/:/frontend/node_modules
+      - ./:/frontend
+      - ./node_modules/:/frontend/node_modules
     restart: always
     tty: true
