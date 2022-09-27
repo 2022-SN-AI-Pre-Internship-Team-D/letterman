@@ -21,20 +21,6 @@ services:
       - backend
       - frontend
 
-  frontend:
-    build:
-      context: ./letterman-front
-      args:
-        API_URL: "*"
-    environment:
-      - REACT_APP_BACKEND_URL=http://localhost:8080
-    volumes:
-      - ./letterman-front:/frontend
-      - build_folder:/frontend/build
-      - ./letterman-front/node_modules/:/frontend/node_modules 
-    restart: always
-    tty: true
-
   db:
     container_name: mysqldb
     image: mysql:latest
@@ -54,11 +40,8 @@ services:
 
   backend:
     build: ./letterman-back/backend
-    command: >
-      bash -c "python3 manage.py makemigrations &&
-               python3 manage.py migrate &&
-               python3 manage.py runserver 0.0.0.0:8080 &&
-               gunicorn backend.wsqi.application --bind 0.0.0.0:8080"
+    container_name: backend
+    command: gunicorn backend.wsgi --bind 0.0.0.0:8080 --timeout 240
     ports:
       - "8080:8080"
     volumes:
@@ -68,3 +51,19 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  frontend:
+    build:
+      context: ./letterman-front
+      args:
+        API_URL: "*"
+    container_name: frontend
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
+    volumes:
+      - ./letterman-front:/frontend
+      - build_folder:/frontend/build
+      - ./letterman-front/node_modules/:/frontend/node_modules 
+    restart: always
+    tty: true
+
