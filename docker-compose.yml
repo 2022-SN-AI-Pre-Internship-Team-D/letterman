@@ -1,16 +1,37 @@
 version: "3"
 
 volumes:
+  static_volume: null
+  media_volume: null
+  build_folder: null
   mysql_data: {}
 
 services:
+  nginx:
+    build:
+      context: ./nginx 
+      dockerfile: Dockerfile
+    volumes:
+      - static_volume:/backend/staticfiles
+      - media_volume:/backend/mediafiles
+      - build_folder:/var/www/frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - frontend
+
   frontend:
     build:
       context: ./letterman-front
       args:
         API_URL: "*"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
     volumes:
       - ./letterman-front:/frontend
+      - build_folder:/frontend/build
+      - ./letterman-front/node_modules/:/frontend/node_modules 
     restart: always
     tty: true
 
@@ -36,19 +57,14 @@ services:
     command: >
       bash -c "python3 manage.py makemigrations &&
                python3 manage.py migrate &&
-               python3 manage.py runserver 0.0.0.0:8080"
+               python3 manage.py runserver 0.0.0.0:8080 &&
+               gunicorn backend.wsqi.application --bind 0.0.0.0:8080"
     ports:
       - "8080:8080"
     volumes:
       - ./letterman-back/backend:/app
+      - static_volume:/backend/staticfiles
+      - media_volume:/backend/mediafiles
     depends_on:
       db:
         condition: service_healthy
-
-  nginx:
-    build:
-      context: ./nginx 
-    ports:
-      - 80:80
-    depends_on:
-      - frontend
