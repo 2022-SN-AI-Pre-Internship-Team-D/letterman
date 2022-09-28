@@ -9,9 +9,6 @@ EXPOSE 8080
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# CMD manage.py makemigrations && manage.py migrate
-            #    python3 manage.py runserver 0.0.0.0:8080 &&
-
 # ENV DOCKERIZE_VERSION v0.6.1
 # RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
 #     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
