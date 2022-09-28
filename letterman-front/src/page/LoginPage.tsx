@@ -1,5 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import pencilImg from 'images/pencilImage.svg';
+import star from 'images/star.svg';
 import Enter from 'images/Enter.png';
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
@@ -42,21 +43,6 @@ function LoginPage() {
     }
   }, []);
 
-  // 비밀번호
-  // const onChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-  //   const passwordCurrent = e.target.value;
-  //   setPassword(passwordCurrent);
-
-  //   if (!passwordRegex.test(passwordCurrent)) {
-  //     setPasswordMessage('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!');
-  //     setIsPassword(false);
-  //   } else {
-  //     setPasswordMessage('안전한 비밀번호에요 : )');
-  //     setIsPassword(true);
-  //   }
-  // }, []);
-
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -68,11 +54,9 @@ function LoginPage() {
 
     (async () => {
       await axios
-        .post(`/users/sign-in/`, userInfo)
+        .post(`/users/sign-in`, userInfo)
         .then((res) => {
-          // console.log('로그인 성공');
           setToken(res.data.access, res.data.refresh); // 토큰 localstorage에 저장
-          // console.log(getToken(), ' localstorage 들어갔는지 확인');
           const uuid = decodeAccessToken(getToken().access || ''); // 🤚 이거 다음에 확인
           dispatch(setUUID(uuid));
           navigate('/mainpage');
@@ -87,21 +71,20 @@ function LoginPage() {
     navigate('/signup');
   };
 
-  // const tk: string | null = localStorage.getItem('access_token');
-  // checkAccessToken(tk!);
-
   return (
-    <div className="h-screen bg-[#0E1733] flex justify-center flex-col items-center">
+    <div className="absolute overflow-hidden w-screen h-full bg-[#0E1733] flex justify-center flex-col items-center">
+      <img src={star} alt="star" className="absolute bg-repeat" />
       <div style={{ marginLeft: '60px' }} className="flex">
-        <h4 className=" text-[#9CA6C5] text-5xl font-press-start text-center pt-20 pb-35">LOGIN</h4>
-        <img style={{ position: 'relative', right: '20px', top: '45px' }} src={pencilImg} alt="pencil" />
+        <h4 className=" text-[#9CA6C5] text-5xl font-press-start text-center ">LOGIN</h4>
+        <img style={{ position: 'relative', right: '20px', bottom: '10px' }} src={pencilImg} alt="pencil" />
       </div>
 
       <form
-        className="w-2/4 h-2/4 m-50 items-center flex-col flex justify-center center p-20 bg-grey rounded-lg"
+        className="md:w-2/4 md:h-2/4 w-80 h-96 items-center flex-col flex justify-center center bg-grey rounded-lg"
+
         onSubmit={handleLogin}
       >
-        <div className=" justify-center flex flex-col w-80">
+        <div className=" justify-center flex flex-col md:w-96 w-44">
           <label className=" text-background flex flex-col" htmlFor="email">
             <p className="mb-2">이메일</p>
             <input
@@ -123,21 +106,21 @@ function LoginPage() {
           </label>
         </div>
 
-        <div className="flex-row flex relative mt-8  content-center">
-          <img style={{ position: 'absolute', top: '-2px', left: '14px', zIndex: '1' }} src={Enter} alt="pencil" />
+        <div className="sm:flex-row flex-col flex relative mt-8  content-center ">
           <button
             type="submit"
-            className=" rounded-xl border-none bg-[#677DC6] w-36 mr-4 drop-shadow-lg px-14 pr-4 py-2.5  text-white font-semibold  bg-button-500"
+            className="flex-row flex justify-center items-center mb-4 rounded-xl border-none bg-[#677DC6] h-fit  drop-shadow-lg px-4  text-white font-semibold  bg-button-500"
           >
+            <img className="w-7" src={Enter} alt="pencil" />
             Login
           </button>
-          <img style={{ position: 'absolute', top: '-2px', right: '93px', zIndex: '1' }} src={Enter} alt="pencil" />
+
           <button
             type="button"
-            className="rounded-xl border-none bg-[#677DC6]  w-36 ml-4 drop-shadow-lg px-14 pr-4 py-2.5 text-white font-semibold  bg-button-500"
+            className="flex-row flex justify-center items-center md:ml-4 rounded-xl border-none bg-[#677DC6] h-fit  drop-shadow-lg px-4  text-white font-semibold  bg-button-500"
             onClick={goToSign}
           >
-            Sign Up
+            <img className="w-7" src={Enter} alt="pencil" /> Sign Up
           </button>
         </div>
       </form>

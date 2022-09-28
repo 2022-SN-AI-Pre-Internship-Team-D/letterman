@@ -1,7 +1,7 @@
 import EachCookie from './EachCookie';
 
 function FooterCookies() {
-  const updownList = ['up', '', 'up', '', 'up', '', 'up', '', 'up', '', 'up', ''];
+  const updownList = ['up', '', 'up', '', 'up', '', 'up', '', 'up', '', 'up'];
 
   const rendering = () => {
     const result = [];
@@ -11,7 +11,7 @@ function FooterCookies() {
     return result;
   };
 
-  return <div className="fixed flex justify-center bottom-0">{rendering()}</div>;
+  return <div className="fixed bottom-2 left-3 flex justify-center ">{rendering()}</div>;
 }
 
 export default FooterCookies;

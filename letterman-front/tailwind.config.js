@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-// const { start } = require('repl')
+// const { start } = require('repl');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'press-start': ['Itim', 'cursive;'],
-        'dear' : ["SeaweedScript"],
+        dear: ['SeaweedScript'],
       },
       colors: {
         grey: '#D9D9D9',
@@ -21,6 +21,9 @@ module.exports = {
       },
       width: {
         128: '40rem',
+        w43: '43rem',
+        w38: '38rem',
+        winput: '580px',
       },
     },
   },

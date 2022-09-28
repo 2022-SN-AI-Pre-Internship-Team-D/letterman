@@ -15,9 +15,7 @@ function EachCookie({ setting = '' }) {
     <Cookie
       src="images/cookieimg.png"
       alt="asdf"
-      className={`${
-        updown ? ' w-20 md:w-24 lg:w-28 mb-5 md:mb-7 lg:mb-10' : ' w-20 md:w-24 lg:w-28 mt-5 md:mt-7 lg:mt-10'
-      }`}
+      className={`${updown ? 'w-6 md:w-14  mb-5 md:mb-7 ' : ' w-6 md:w-14  mt-5 md:mt-7 '}`}
     />
   );
 }

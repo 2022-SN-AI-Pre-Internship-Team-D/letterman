@@ -10,7 +10,7 @@ function BirthMailListPage() {
   const [mailList, setMailList] = useState([]); // <any[]>
   const [page, setPage] = useState(1);
   const [mailCount, setMailCount] = useState('0');
-  const {uuid} = getUUID()
+  const { uuid } = getUUID();
 
   const changeBeforePage = () => {
     if (page > 1) {
@@ -27,7 +27,7 @@ function BirthMailListPage() {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`letters/users/uuid/birth/all/pages/${page}`)
+        .get(`letters/users/${uuid}/birth/all/pages/${page}`)
         .then((res) => {
           setMailList(res.data);
           if (res.status === 204) {
@@ -42,7 +42,7 @@ function BirthMailListPage() {
 
     (async () => {
       await axios
-        .get(`letters/users/uuid/birth/counts`)
+        .get(`letters/users/${uuid}/birth/counts`)
         .then((res) => {
           setMailCount(res.data[0].count);
         })
@@ -52,6 +52,17 @@ function BirthMailListPage() {
     })();
   }, [page]);
 
+  if (mailCount === '0') {
+    return (
+      <div
+        className="flex justify-center items-center h-screen"
+        style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+      >
+        <span className="text-white m-14 text-2xl">받은 편지가 없습니다.</span>
+      </div>
+    );
+  }
+
   return (
     <div
       className="flex justify-center items-center flex-col "
@@ -60,7 +71,7 @@ function BirthMailListPage() {
       <span className="text-white m-14 text-2xl">총 {mailCount}개의 편지를 받았습니다.</span>
 
       {Object.values(mailList)?.map((item: any) => (
-        <EachMail content={item.text} key={item.id} />
+        <EachMail content={item.text} imgfile={item.file} audiofile={item.media} divid={item.id} key={item.id} />
       ))}
       <div className="flex flex-row mb-8">
         <MoreButton handlePage={changeBeforePage} title="<" />

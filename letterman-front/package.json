@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "axios": "^0.27.2",
+    "html2canvas": "^1.4.1",
     "jwt-decode": "^3.1.2",
     "keyframe": "^2.1.0",
     "react": "^18.2.0",
@@ -25,8 +26,10 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
+    "setheader": "^1.0.2",
     "styled-components": "^5.3.5",
     "typescript": "^4.8.2",
+    "use-recorder": "^0.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
