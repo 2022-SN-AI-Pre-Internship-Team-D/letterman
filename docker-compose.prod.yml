@@ -1,9 +1,26 @@
 version: "3"
 
 volumes:
+  static_volume: null
+  media_volume: null
+  build_folder: null
   mysql_data: {}
 
 services:
+  nginx:
+    build:
+      context: ./nginx 
+      dockerfile: Dockerfile
+    volumes:
+      - static_volume:/backend/staticfiles
+      - media_volume:/backend/mediafiles
+      - build_folder:/var/www/frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - frontend
+
   db:
     container_name: mysqldb
     image: mysql:latest
@@ -22,15 +39,15 @@ services:
       retries: 10
 
   backend:
-    build: ./letterman-back
-    command: >
-      bash -c "python3 manage.py makemigrations &&
-               python3 manage.py migrate &&
-               python3 manage.py runserver 0.0.0.0:8080"
+    build: ./letterman-back/backend
+    container_name: backend
+    command: gunicorn backend.wsgi --bind 0.0.0.0:8080 --timeout 240
     ports:
       - "8080:8080"
     volumes:
-      - ./backend:/app
+      - ./letterman-back/backend:/app
+      - static_volume:/backend/staticfiles
+      - media_volume:/backend/mediafiles
     depends_on:
       db:
         condition: service_healthy
@@ -38,15 +55,15 @@ services:
   frontend:
     build:
       context: ./letterman-front
-      dockerfile: Dockerfile
-    command: [ "yarn", "start" ]
+      args:
+        API_URL: "*"
     container_name: frontend
     environment:
       - REACT_APP_BACKEND_URL=http://localhost:8080
     volumes:
       - ./letterman-front:/frontend
+      - build_folder:/frontend/build
       - ./letterman-front/node_modules/:/frontend/node_modules 
-    ports:
-      - "3000:3000"
     restart: always
     tty: true
+
