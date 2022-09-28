@@ -18,17 +18,21 @@ pymysql.install_as_MySQLdb()
 
 from datetime import timedelta
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+is_dev = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(
-    env_file=os.path.join(BASE_DIR, '.env')
-)
+env = environ.Env(DEBUG=(bool, True))
+
+if is_dev:
+    environ.Env.read_env(
+        env_file=os.path.join(BASE_DIR, 'dev.env')
+    )
+else:
+    environ.Env.read_env(
+        env_file=os.path.join(BASE_DIR, '.env')
+    )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -65,7 +69,9 @@ INSTALLED_APPS = [
     'users',
     'letters',
     #s3 bucket
-    'storages'
+    'storages',
+    #Monitoring
+    'django_prometheus'
 ]
 
 AUTH_USER_MODEL = 'users.User' 
@@ -92,9 +98,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #Monitoring
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware' 
 ]
 
 ROOT_URLCONF = 'backend.urls'
+# ROOT_URLCONF = "graphite.urls_prometheus_wrapper"
 
 TEMPLATES = [
     {
@@ -122,11 +132,6 @@ DATABASES = {
     'default': env.db(),
 }
 
-CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000', 'http://localhost:3000', 'http://0.0.0.0:3000',
-                         'http://127.0.0.1:8080', 'http://localhost:8080', 'http://0.0.0.0:8080',
-                         'http://127.0.0.1:80', 'http://localhost:80', 'http://0.0.0.0:80',
-                         'http://localhost', 'http://0.0.0.0', 'http://127.0.0.1',]
-CORS_ALLOW_CREDENTIALS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -167,12 +172,15 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/staticfiles/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = '/mediafiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000', 'http://localhost:3000', 'http://0.0.0.0:3000',
+                         'http://127.0.0.1:8080', 'http://localhost:8080', 'http://0.0.0.0:8080',
+                         'http://127.0.0.1:80', 'http://localhost:80', 'http://0.0.0.0:80',
+                         'http://localhost', 'http://0.0.0.0', 'http://127.0.0.1',]
+CORS_ALLOW_CREDENTIALS = True
