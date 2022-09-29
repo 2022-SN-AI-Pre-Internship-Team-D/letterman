@@ -8,6 +8,7 @@ COPY . /frontend
 ENV REACT_APP_HOST_IP_ADDRESS $API_URL
 ENV REACT_APP_BACKEND_URL $REACT_APP_BACKEND_URL
 
+RUN yarn 
 RUN yarn --ignore-platform
 
 COPY . ./
