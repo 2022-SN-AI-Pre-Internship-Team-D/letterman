@@ -7,8 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'press-start': ['Itim', 'cursive;'],
-        dear: ['SeaweedScript'],
+        'press-start': ['Dongle', 'sans-serif'],
       },
       colors: {
         grey: '#D9D9D9',

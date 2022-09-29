@@ -137,103 +137,103 @@ function MailWritePage() {
 
   return (
     <div
-      className="flex justify-center items-center py-20 h-screen"
-      style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+    className="flex justify-center items-center py-20 h-screen font-press-start"
+    style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+  >
+    <form
+      className="rounded-xl flex flex-col items-center bg-white p-4 md:w-1/6"
+      style={{ height: '48rem', width: '38rem' }}
+      onSubmit={(e) => handleSubmit(e)}
     >
-      <form
-        className="rounded-xl flex flex-col items-center bg-white p-4 md:w-1/6"
-        style={{ height: '48rem', width: '38rem' }}
-        onSubmit={(e) => handleSubmit(e)}
-      >
-        <img src={postcard} alt="postcard" className="w-14" />
-        <p className="italic font-serif text-xl">dear {userName}</p>
-        <div className="flex flex-row mt-3">
-          {/* 음성녹음 */}
+      <img src={postcard} alt="postcard" className="w-14" />
+      <p className="italic font-serif text-xl">dear {userName}</p>
+      <div className="flex flex-row mt-3">
+        {/* 음성녹음 */}
 
-          <div className="flex flex-row">
-            {(status === RecorderStarus.PAUSED || status === RecorderStarus.SILENT) && (
-              <button type="button" onClick={() => handleAction(RecorderStarus.RECORDING)}>
-                <img src={mic} alt="mic" className="" />
-              </button>
-            )}
-            {status === RecorderStarus.RECORDING && (
-              <button type="button" onClick={() => handleAction(RecorderStarus.PAUSED)}>
-                <img src={stops} alt="mic" className="w-10" />
-              </button>
-            )}
-            {(status === RecorderStarus.PAUSED || status === RecorderStarus.SILENT) && !!player && (
-              <button
-                type="button"
-                onClick={() => handleAction(RecorderStarus.PLAYING)}
-                className="rounded-xl bg-subBackground"
-                style={{ height: '3rem', width: '13rem' }}
-              >
-                녹음결과 확인
-              </button>
-            )}
-            {status === RecorderStarus.PLAYING && (
-              <button type="button" onClick={() => handleAction(RecorderStarus.SILENT)}>
-                <img src={pause} alt="mic" className="w-10" />
-              </button>
-            )}
-          </div>
-          {!!player && (
+        <div className="flex flex-row">
+          {(status === RecorderStarus.PAUSED || status === RecorderStarus.SILENT) && (
+            <button type="button" onClick={() => handleAction(RecorderStarus.RECORDING)}>
+              <img src={mic} alt="mic" className="" />
+            </button>
+          )}
+          {status === RecorderStarus.RECORDING && (
+            <button type="button" onClick={() => handleAction(RecorderStarus.PAUSED)}>
+              <img src={stops} alt="mic" className="w-10" />
+            </button>
+          )}
+          {(status === RecorderStarus.PAUSED || status === RecorderStarus.SILENT) && !!player && (
             <button
               type="button"
-              onClick={() => {
-                if (audio instanceof Object) {
-                  // console.log(mailData.media.blob);
-                  const test = Object.values(audio);
-                  console.log(test[2]);
-                  setVoiceFile(test[2]);
-                }
-              }}
+              onClick={() => handleAction(RecorderStarus.PLAYING)}
+              className="rounded-xl bg-subBackground text-2xl"
+              style={{ height: '3rem', width: '8rem' }}
             >
-              <img src={downloads} alt="mic" className="w-10" />
+              녹음결과 확인
+            </button>
+          )}
+          {status === RecorderStarus.PLAYING && (
+            <button type="button" onClick={() => handleAction(RecorderStarus.SILENT)}>
+              <img src={pause} alt="mic" className="w-10" />
             </button>
           )}
         </div>
-
-        <div className="preview">
-          <label htmlFor="imgfile">
-            {preview && (
-              <img
-                src={preview}
-                alt="file"
-                className="object-cover cursor-pointer m-10 mt-5 w-72 md:w-96 h-48 rounded-xl bg-subBackground"
-              />
-            )}
-            <input
-              id="imgfile"
-              ref={hiddenFileInput}
-              type="file"
-              onChange={onChangeImage}
-              onClick={handleClick}
-              accept="image/*"
-              className="hidden"
-            />
-          </label>
-        </div>
-        <div className="h-64 md:w-winput w-96 text-center bg-[url('images/letterbg.png')] rounded-lg h-fit ">
-          <textarea
-            placeholder="To.."
-            cols={45}
-            rows={6}
-            maxLength={300}
-            className="md:w-50 p-4 h-30 rounded-lg bg-transparent text-xl leading-9 focus:outline-none "
-            style={{ width: '530px', height: '20rem', resize: 'none' }}
-            onChange={(e) => {
-              setContent(e.currentTarget.value);
+        {!!player && (
+          <button
+            type="button"
+            onClick={() => {
+              if (audio instanceof Object) {
+                // console.log(mailData.media.blob);
+                const test = Object.values(audio);
+                console.log(test[2]);
+                setVoiceFile(test[2]);
+              }
             }}
-          />
-        </div>
-        <button type="submit" className=" bg-white px-10 py-2 mt-5 rounded-full border-4 border-subBackground">
-          전송
-        </button>
-      </form>
+          >
+            <img src={downloads} alt="mic" className="w-10" />
+          </button>
+        )}
+      </div>
 
-      <ResultModal openinit={modalOC} closeModal={() => setModalOC(false)} id={state[0]} />
-    </div>
+      <div className="preview">
+        <label htmlFor="imgfile">
+          {preview && (
+            <img
+              src={preview}
+              alt="file"
+              className="object-cover cursor-pointer m-10 mt-5 w-72 md:w-96 h-48 rounded-xl bg-subBackground"
+            />
+          )}
+          <input
+            id="imgfile"
+            ref={hiddenFileInput}
+            type="file"
+            onChange={onChangeImage}
+            onClick={handleClick}
+            accept="image/*"
+            className="hidden"
+          />
+        </label>
+      </div>
+      <div className="h-64 md:w-winput w-96 text-center bg-[url('images/letterbg.png')] rounded-lg h-fit ">
+        <textarea
+          placeholder="To.."
+          cols={45}
+          rows={6}
+          maxLength={300}
+          className="md:w-50 p-4 h-30 rounded-lg bg-transparent text-3xl leading-9 focus:outline-none "
+          style={{ width: '530px', height: '20rem', resize: 'none' }}
+          onChange={(e) => {
+            setContent(e.currentTarget.value);
+          }}
+        />
+      </div>
+      <button type="submit" className=" bg-white px-10 py-2 mt-5 rounded-full border-4 border-subBackground">
+        전송
+      </button>
+    </form>
+
+    <ResultModal openinit={modalOC} closeModal={() => setModalOC(false)} id={state[0]} />
+  </div>
   );
 }
 export default MailWritePage;

@@ -122,7 +122,7 @@ function MyPage() {
   };
 
   return (
-    <div className="absolute overflow-hidden pt-20 bg-[#0E1733] flex justify-center w-screen h-screen items-center">
+    <div className="font-press-start text-xl absolute overflow-hidden pt-20 bg-[#0E1733] flex justify-center w-screen h-screen items-center">
       <img src={star} alt="star" className="absolute bg-repeat " />
       <div className="  text-white border-solid border-2 rounded-lg w-4/6 h-4/5 flex flex-col items-center justify-center">
         <img

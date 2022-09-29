@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.google.com/specimen/Seaweed+Script?query=lita');
-
 @font-face {
-    font-family: "script";
-    src: url("./font/SeaweedScript.ttf");
-}
+    font-family: 'Myfont';
+    src: url('./fonts/KOTRA\ HOPE.ttf');
+  }
+  

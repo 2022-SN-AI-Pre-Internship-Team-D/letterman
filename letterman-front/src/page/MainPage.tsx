@@ -113,73 +113,73 @@ function MainPage() {
 
   return (
     <div
-      className="flex justify-center font-press-start  h-screen"
-      style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+    className="flex justify-center font-press-start font-bold   h-screen"
+    style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+  >
+    <img src={star} alt="star" className="absolute bg-repeat h-screen" />
+    {/* 2023 */}
+    <button
+      onClick={handleClick}
+      id={eventList[2]}
+      type="button"
+      className="flex justify-center scaleup absolute md:top-0 top-1/4 md:m-10 w-80 md:w-2/4  "
     >
-      <img src={star} alt="star" className="absolute bg-repeat h-screen" />
-      {/* 2023 */}
-      <button
-        onClick={handleClick}
-        id={eventList[2]}
-        type="button"
-        className="flex justify-center scaleup absolute md:top-0 top-1/4 md:m-10 w-80 md:w-2/4  "
-      >
-        <img src="images/newyearimg.png" alt="a" className="" />
-      </button>
+      <img src="images/newyearimg.png" alt="a" className="" />
+    </button>
 
-      <div className="absolute top-5 left-2/5 md:left-20">
-        <Link to="/mypage">
-          <span className="flex justify-center text-white font-bold text-xl">{username} 님</span>
-        </Link>
-      </div>
-      {/* 편지 */}
-      <div className="flex flex-col absolute top-0 left-5 w-28 md:m-10  md:w-28 lg:w-1/12">
-        <button onClick={handleBirthClick} type="button" className="scaleup">
-          <img src="images/letterimg.png" alt="a" />
-        </button>
-      </div>
-      {/* 추석 */}
-      <button
-        type="button"
-        onClick={handleClick} id={eventList[3]}
-        className="scaleup absolute bottom-0 left-0 w-40 md:w-80 lg:w-2/6"
-      >
-        <img src="images/thankimg.png" alt="a" />
-      </button>
-      {/* 크리스마스 */}
-      <button onClick={handleClick} id={eventList[0]} type="button">
-        <img
-          src="images/treeimg.png"
-          alt="a"
-          className="scaleup absolute bottom-0 right-0 m-1 md:m-3  w-60 md:w-80 lg:w-2/6 "
-        />
-      </button>
-      {/* 호박 선물 */}
-      <div className="flex flex-row absolute bottom-0 right-0 w-60 md:w-80 lg:w-2/5 ">
-        <button onClick={handleClick} className="scaleup" type="button" id={eventList[1]}>
-          <img src="images/halloweenimg.png" alt="a" className="origin-center hover:origin-top" />
-        </button>
-        {/* 어린이 날 */}
-        <button  onClick={handleClick} className="scaleup" type="button" id={eventList[4]}>
-          <img src="images/valentineimg.png" alt="a" />
-        </button>
-      </div>
-      {/* 링크 공유 */}
-      <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-4 right-4 w-10 ">
-        <button
-          onClick={() => {
-            handleCopyClipBoard(`http://localhost/mainpage2${uuid}`);
-            // alert('링크가 복사되었습니다!');
-          }}
-          type="button"
-          className="scaleup"
-        >
-          <img src={Share} alt="a" className="" />
-          {isHovering && <h2 className="text-white">click to copy link!</h2>}
-        </button>
-      </div>
-      <RemainModal openinit={modalOC} closeModal={() => setModalOC(false)} test={test} />
+    <div className="absolute top-5 left-2/5 md:left-20">
+      <Link to="/mypage">
+        <span className="flex justify-center text-white text-3xl">{username} 님</span>
+      </Link>
     </div>
+    {/* 편지 */}
+    <div className="flex flex-col absolute top-0 left-5 w-28 md:m-10  md:w-28 lg:w-1/12">
+      <button onClick={handleBirthClick} type="button" className="scaleup">
+        <img src="images/letterimg.png" alt="a" />
+      </button>
+    </div>
+    {/* 추석 */}
+    <button
+      type="button"
+      onClick={handleClick} id={eventList[3]}
+      className="scaleup absolute bottom-0 left-0 w-40 md:w-80 lg:w-2/6"
+    >
+      <img src="images/thankimg.png" alt="a" />
+    </button>
+    {/* 크리스마스 */}
+    <button onClick={handleClick} id={eventList[0]} type="button">
+      <img
+        src="images/treeimg.png"
+        alt="a"
+        className="scaleup absolute bottom-0 right-0 m-1 md:m-3  w-60 md:w-80 lg:w-2/6 "
+      />
+    </button>
+    {/* 호박 선물 */}
+    <div className="flex flex-row absolute bottom-0 right-0 w-60 md:w-80 lg:w-2/5 ">
+      <button onClick={handleClick} className="scaleup" type="button" id={eventList[1]}>
+        <img src="images/halloweenimg.png" alt="a" className="origin-center hover:origin-top" />
+      </button>
+      {/* 어린이 날 */}
+      <button  onClick={handleClick} className="scaleup" type="button" id={eventList[4]}>
+        <img src="images/valentineimg.png" alt="a" />
+      </button>
+    </div>
+    {/* 링크 공유 */}
+    <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-4 right-4 w-10 ">
+      <button
+        onClick={() => {
+          handleCopyClipBoard(`http://localhost:3000/mainpage2${uuid}`);
+          // alert('링크가 복사되었습니다!');
+        }}
+        type="button"
+        className="scaleup"
+      >
+        <img src={Share} alt="a" className="" />
+        {isHovering && <h2 className="text-white">click to copy link!</h2>}
+      </button>
+    </div>
+    <RemainModal openinit={modalOC} closeModal={() => setModalOC(false)} test={test} />
+  </div>
   );
 }
 

@@ -156,7 +156,7 @@ function SignupPage() {
 
   return (
     <div
-      className="absolute overflow-hidden w-screen h-screen flex justify-center"
+      className="font-press-start text-2xl absolute overflow-hidden w-screen h-screen flex justify-center"
       style={{ backgroundColor: ColorSystem.MainColor.Primary }}
     >
       <img src={star} alt="star" className="z-10 absolute bg-repeat " />
@@ -166,7 +166,7 @@ function SignupPage() {
       items-center justify-center"
           style={{ height: '50rem', width: '70rem' }}
         >
-          <div className="flex justify-center mt-3 mb-14 text-white text-4xl">
+          <div className="flex justify-center mt-3 mb-14 text-white text-5xl">
             <span>회원가입</span>
           </div>
 
@@ -200,7 +200,7 @@ function SignupPage() {
                 <div className="ml-10 flex flex-col justify-end  ">
                   <div className="">
                     <label className="m-1.5 text-white flex flex-row" htmlFor="nickname">
-                      <span className="ml-7 my-4 text-lg">닉네임</span>
+                      <span className="ml-6 my-4">닉네임</span>
                       <div className="flex flex-col">
                         <input
                           className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
@@ -215,7 +215,7 @@ function SignupPage() {
                   </div>
                   <div>
                     <label className="m-1.5 text-white flex flex-row" htmlFor="email">
-                      <span className="ml-7 my-4 text-lg">이메일</span>
+                      <span className="ml-6 my-4">이메일</span>
                       <div className="flex flex-col">
                         <input
                           className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
@@ -230,7 +230,7 @@ function SignupPage() {
                   </div>
                   <div>
                     <label className="m-1.5 text-white" htmlFor="password">
-                      <span className="ml-3 my-4 text-lg">비밀번호</span>
+                      <span className="ml-4 my-4">비밀번호</span>
                       <input
                         className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
                         type="password"
@@ -241,7 +241,7 @@ function SignupPage() {
                   </div>
                   <div>
                     <label className="m-1.5 text-white flex flex-row" htmlFor="passwordcheck">
-                      <span className="ml-3 my-4 text-lg">비번확인</span>
+                      <span className="ml-3 my-4 ">비번확인</span>
                       <div className="flex flex-col">
                         <input
                           className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
@@ -259,7 +259,7 @@ function SignupPage() {
                   </div>
                   <div>
                     <label className="m-1.5 text-white" htmlFor="birthday">
-                      <span className="ml-10 my-4 text-lg">생일</span>
+                      <span className="ml-9 my-4">생일</span>
                       <input
                         className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
                         type="date"
@@ -270,7 +270,7 @@ function SignupPage() {
 
                   <div className="my-8 flex justify-end">
                     <button type="submit" className="mr-5">
-                      <p className="text-white text-xl p-2">다음 &#62;</p>
+                      <p className="text-white text-3xl p-2">다음 &#62;</p>
                     </button>
                   </div>
                 </div>

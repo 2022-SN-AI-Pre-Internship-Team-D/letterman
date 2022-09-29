@@ -55,29 +55,29 @@ function BirthMailListPage() {
   if (mailCount === '0') {
     return (
       <div
-        className="flex justify-center items-center h-screen"
+        className="flex justify-center items-center h-screen font-press-start"
         style={{ backgroundColor: ColorSystem.MainColor.Primary }}
       >
-        <span className="text-white m-14 text-2xl">받은 편지가 없습니다.</span>
+        <span className="text-white m-14 text-5xl">받은 편지가 없습니다.</span>
       </div>
     );
   }
 
   return (
     <div
-      className="flex justify-center items-center flex-col "
-      style={{ backgroundColor: ColorSystem.MainColor.Primary }}
-    >
-      <span className="text-white m-14 text-2xl">총 {mailCount}개의 편지를 받았습니다.</span>
+    className="font-press-start flex justify-center items-center flex-col "
+    style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+  >
+    <span className="text-white m-14 text-4xl">총 {mailCount}개의 편지를 받았습니다.</span>
 
-      {Object.values(mailList)?.map((item: any) => (
-        <EachMail content={item.text} imgfile={item.file} audiofile={item.media} divid={item.id} key={item.id} />
-      ))}
-      <div className="flex flex-row mb-8">
-        <MoreButton handlePage={changeBeforePage} title="<" />
-        <MoreButton handlePage={changeFrontPage} title=">" />
-      </div>
+    {Object.values(mailList)?.map((item: any) => (
+      <EachMail content={item.text} imgfile={item.file} audiofile={item.media} divid={item.id} key={item.id} />
+    ))}
+    <div className="flex flex-row mb-8">
+      <MoreButton handlePage={changeBeforePage} title="<" />
+      <MoreButton handlePage={changeFrontPage} title=">" />
     </div>
+  </div>
   );
 }
 export default BirthMailListPage;
