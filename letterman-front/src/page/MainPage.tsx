@@ -168,7 +168,7 @@ function MainPage() {
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-4 right-4 w-10 ">
       <button
         onClick={() => {
-          handleCopyClipBoard(`http://localhost:3000/mainpage2${uuid}`);
+          handleCopyClipBoard(`http://localhost/mainpage2${uuid}`);
           // alert('링크가 복사되었습니다!');
         }}
         type="button"
