@@ -4,9 +4,8 @@ volumes:
   static_volume: null
   media_volume: null
   build_folder: null
-  mysql_data: {}
-  prometheus_data: {}
-  grafana_data: {}  
+  prometheus_data: null
+  grafana_data: null
 
 services:
   backend:
@@ -33,7 +32,7 @@ services:
         API_URL: "*"
     container_name: frontend
     environment:
-      - REACT_APP_BACKEND_URL=http://localhost:8080
+      - REACT_APP_BACKEND_URL=http://localhost:8080/api/v1
     volumes:
       - ./letterman-front:/frontend
       - build_folder:/frontend/build
@@ -45,8 +44,8 @@ services:
 
   nginx:
     build:
-      context: ./nginx 
-      dockerfile: Dockerfile
+      context: ./nginx
+    image: nginx:latest
     container_name: nginx
     volumes:
       - static_volume:/backend/staticfiles

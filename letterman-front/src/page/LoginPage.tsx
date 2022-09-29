@@ -54,7 +54,7 @@ function LoginPage() {
 
     (async () => {
       await axios
-        .post(`/users/sign-in`, userInfo)
+        .post(`api/v1/users/sign-in`, userInfo)
         .then((res) => {
           setToken(res.data.access, res.data.refresh); // 토큰 localstorage에 저장
           const uuid = decodeAccessToken(getToken().access || ''); // 🤚 이거 다음에 확인
