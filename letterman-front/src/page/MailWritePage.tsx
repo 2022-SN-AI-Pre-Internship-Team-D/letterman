@@ -64,7 +64,7 @@ function MailWritePage() {
     }
     (async () => {
       await axios
-        .get(`/users/${state[0]}/info`)
+        .get(`api/v1/users/${state[0]}/info`)
         .then((res) => {
           setUserName(res.data.username);
         })
@@ -82,7 +82,7 @@ function MailWritePage() {
         alert('모든 항목 작성');
       } else {
         axios
-          .post(`/letters/users/${state[0]}/birth/write`, mailData, {
+          .post(`api/v1/letters/users/${state[0]}/birth/write`, mailData, {
             headers: { 'Content-Type': 'multipart/form-data' },
           })
           .then((res) => {
@@ -97,7 +97,7 @@ function MailWritePage() {
       alert('모든 항목 작성');
     } else {
       axios
-        .post(`/letters/users/${state[0]}/events/${state[1]}/write`, mailData, {
+        .post(`api/v1/letters/users/${state[0]}/events/${state[1]}/write`, mailData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         })
         .then((res) => {

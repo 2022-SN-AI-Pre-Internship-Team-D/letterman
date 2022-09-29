@@ -22,7 +22,7 @@ const checkAccessToken = async (Token: string) => {
   };
 
   await axios
-    .post(`/users/token/verify`, tokenForm)
+    .post(`api/v1/users/token/verify`, tokenForm)
     .then((res) => {
       if (res.status === 200) {
         console.log('토큰 아직 유효함');
@@ -50,7 +50,7 @@ const decodeAccessToken = (accessToken: string) => {
 // 👉 리프레쉬로 엑세스 갱신
 const updateAccessToken = async (refreshToken: string) => {
   await axios
-    .post(`/users/token/refresh`, {
+    .post(`api/v1/users/token/refresh`, {
       refresh: refreshToken,
     })
     .then((res) => {

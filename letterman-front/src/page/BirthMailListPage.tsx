@@ -27,7 +27,7 @@ function BirthMailListPage() {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`letters/users/${uuid}/birth/all/pages/${page}`)
+        .get(`api/v1/letters/users/${uuid}/birth/all/pages/${page}`)
         .then((res) => {
           setMailList(res.data);
           if (res.status === 204) {
@@ -42,7 +42,7 @@ function BirthMailListPage() {
 
     (async () => {
       await axios
-        .get(`letters/users/${uuid}/birth/counts`)
+        .get(`api/v1/letters/users/${uuid}/birth/counts`)
         .then((res) => {
           setMailCount(res.data[0].count);
         })

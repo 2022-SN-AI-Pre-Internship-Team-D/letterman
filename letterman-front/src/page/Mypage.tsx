@@ -23,7 +23,7 @@ function MyPage() {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`/users/${uuid}/info`)
+        .get(`api/v1/users/${uuid}/info`)
         .then((res) => {
           setUserName(res.data.username);
           setBirth(res.data.birth);
@@ -37,7 +37,7 @@ function MyPage() {
     // 생일
     (async () => {
       await axios
-        .get(`letters/users/${uuid}/birth/counts`)
+        .get(`api/v1/letters/users/${uuid}/birth/counts`)
         .then((res) => {
           setBirthMail(res.data[0].count);
         })
@@ -46,7 +46,7 @@ function MyPage() {
         });
     })();
 
-    axios.get('/letters/events/all').then((res) => {
+    axios.get('api/v1/letters/events/all').then((res) => {
       for (let i = 0; i < 3; i += 1) {
         arrEvent[i] = res.data[i].uuid;
         console.log(arrEvent[i]);
@@ -55,7 +55,7 @@ function MyPage() {
       // 새해
       (async () => {
         await axios
-          .get(`letters/users/${uuid}/events/${arrEvent[2]}/counts`)
+          .get(`api/v1/letters/users/${uuid}/events/${arrEvent[2]}/counts`)
           .then((res) => {
             setNewYearMail(res.data[0].count);
           })
@@ -67,7 +67,7 @@ function MyPage() {
       // 할로윈
       (async () => {
         await axios
-          .get(`letters/users/${uuid}/events/${arrEvent[1]}/counts`)
+          .get(`api/v1/letters/users/${uuid}/events/${arrEvent[1]}/counts`)
           .then((res) => {
             sethalloweenMail(res.data[0].count);
           })

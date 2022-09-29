@@ -112,7 +112,7 @@ function SignupPage() {
     } else {
       (async () => {
         await axios
-          .post(`/users/sign-up`, signUpUserInfo, { headers: { 'Content-Type': 'multipart/form-data' } })
+          .post(`api/v1/users/sign-up`, signUpUserInfo, { headers: { 'Content-Type': 'multipart/form-data' } })
           .then((res) => {
             console.log('회원가입 성공');
             console.log(res.data);

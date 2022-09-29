@@ -31,7 +31,7 @@ export default function RemainModal({ openinit, closeModal, test }: Props) {
     if (test.eventID === '') {
       (async () => {
         await axios
-          .get(`/letters/users/${uuid}/birth/counts`)
+          .get(`api/v1/letters/users/${uuid}/birth/counts`)
           .then((res) => {
             setMailNum(res.data[0].count);
           })
@@ -42,7 +42,7 @@ export default function RemainModal({ openinit, closeModal, test }: Props) {
     } else {
       (async () => {
         await axios
-          .get(`/letters/users/${uuid}/events/${test!.eventID}/counts`)
+          .get(`api/v1/letters/users/${uuid}/events/${test!.eventID}/counts`)
           .then((res) => {
             if (res.data.length) {
               setMailNum(res.data[0].count);

@@ -32,15 +32,16 @@ function MainPage() {
   const [test, setTest] = useState<ModalInfo>();
 
   useEffect(() => {
-    axios.get(`/letters/events/all`).then((res) => {
+    axios.get(`api/v1/letters/events/all`).then((res) => {
       for (let i = 0; i < 5; i += 1) {
+        console.log(res.data[i]);
         arrEvent[i] = res.data[i].uuid;
       }
       setEventList(arrEvent);
     });
     (async () => {
       await axios
-        .get(`/users/${uuid}/info`)
+        .get(`api/v1/users/${uuid}/info`)
         .then((res) => {
           setUserName(res.data.username);
         })
@@ -68,7 +69,7 @@ function MainPage() {
     const { id } = event.currentTarget;
     console.log(event.currentTarget.id);
     await axios
-      .get(`/letters/events/${id}/check-date`)
+      .get(`api/v1/letters/events/${id}/check-date`)
       .then((res) => {
         console.log(res.data.status);
         if (res.data.status === 'false') {
@@ -90,7 +91,7 @@ function MainPage() {
   const handleBirthClick = () => {
     (async () => {
       await axios
-        .get(`/letters/users/${uuid}/events/birth/check-birth-date`)
+        .get(`api/v1/letters/users/${uuid}/events/birth/check-birth-date`)
         .then((res) => {
           if (res.data.status === 'true') {
             console.log('편지 확인 가능');
@@ -167,7 +168,7 @@ function MainPage() {
       <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-4 right-4 w-10 ">
         <button
           onClick={() => {
-            handleCopyClipBoard(`http://localhost:3000/mainpage2${uuid}`);
+            handleCopyClipBoard(`http://localhost/mainpage2${uuid}`);
             // alert('링크가 복사되었습니다!');
           }}
           type="button"

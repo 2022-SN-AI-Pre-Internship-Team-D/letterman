@@ -29,7 +29,7 @@ function MailListPage() {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`letters/users/${uuid}/events/${state[0]}/all/pages/${page}`)
+        .get(`api/v1/letters/users/${uuid}/events/${state[0]}/all/pages/${page}`)
         .then((res) => {
           setMailList(res.data);
           console.log(res.data);
@@ -45,7 +45,7 @@ function MailListPage() {
 
     (async () => {
       await axios
-        .get(`letters/users/${uuid}/events/${state[0]}/counts`)
+        .get(`api/v1/letters/users/${uuid}/events/${state[0]}/counts`)
         .then((res) => {
           setMailCount(res.data[0].count);
         })

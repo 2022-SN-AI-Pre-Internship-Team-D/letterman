@@ -22,8 +22,8 @@ services:
       - ./letterman-back/backend:/app
       - static_volume:/backend/staticfiles
       - media_volume:/backend/mediafiles
-    networks:
-      - letterman
+    # networks:
+    #   - letterman
 
   frontend:
     build:
@@ -31,33 +31,32 @@ services:
       args:
         API_URL: "*"
     container_name: frontend
-    environment:
-      - REACT_APP_BACKEND_URL=http://localhost:8080/api/v1
     volumes:
       - ./letterman-front:/frontend
       - build_folder:/frontend/build
       - ./letterman-front/node_modules/:/frontend/node_modules 
     restart: always
+    stdin_open: true 
     tty: true
-    networks:
-      - letterman
+    # networks:
+    #   - letterman
 
   nginx:
     build:
       context: ./nginx
-    image: nginx:latest
+    # image: nginx:latest
     container_name: nginx
     volumes:
       - static_volume:/backend/staticfiles
       - media_volume:/backend/mediafiles
       - build_folder:/var/www/frontend
     ports:
-      - "80:80"
+      - 80:80
     depends_on:
       - backend
       - frontend
-    networks:
-      - letterman
+    # networks:
+    #   - letterman
 
 
   prometheus:
@@ -77,8 +76,8 @@ services:
       - --web.console.libraries=/usr/share/prometheus/console_libraries
       - --web.console.templates=/usr/share/proemtheus/consoles
       - --web.enable-admin-api
-    networks:
-      - letterman
+    # networks:
+    #   - letterman
 
   grafana:
     container_name: grafana
@@ -92,9 +91,9 @@ services:
       GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource"
     depends_on:
       - prometheus
-    networks:
-      - letterman
+    # networks:
+    #   - letterman
 
-networks:
-  letterman:
-    driver: bridge
+# networks:
+#   letterman:
+#     driver: bridge

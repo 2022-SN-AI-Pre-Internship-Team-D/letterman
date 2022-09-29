@@ -15,7 +15,7 @@ function MainPage2() {
   console.log(hostID.uuid);
 
   useEffect(() => {
-    axios.get(`/letters/events/all`).then((res) => {
+    axios.get(`api/v1/letters/events/all`).then((res) => {
       for (let i = 0; i < 5; i += 1) {
         arrEvent[i] = res.data[i].uuid;
       }
@@ -23,7 +23,7 @@ function MainPage2() {
     });
     (async () => {
       await axios
-        .get(`/users/${hostID.uuid}/exist`)
+        .get(`api/v1/users/${hostID.uuid}/exist`)
         .then((res) => {
           console.log(res);
         })
