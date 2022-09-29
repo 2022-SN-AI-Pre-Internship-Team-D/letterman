@@ -49,7 +49,7 @@ function MyPage() {
     })();
 
     axios.get('api/v1/letters/events/all').then((res) => {
-      for (let i = 0; i < 3; i += 1) {
+      for (let i = 0; i < 5; i += 1) {
         arrEvent[i] = res.data[i].uuid;
         console.log(arrEvent[i]);
       }
