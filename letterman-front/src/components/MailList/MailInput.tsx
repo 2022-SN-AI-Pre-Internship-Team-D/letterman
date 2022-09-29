@@ -16,7 +16,7 @@ function MailInput({ content = '' }) {
           maxLength={300}
           style={{ resize: 'none' }}
           value={content}
-          className="text-black p-4 pl-8 rounded-lg bg-transparent text-xl leading-9 focus:outline-none "
+          className="text-black p-4 pl-8 rounded-lg bg-transparent text-3xl leading-9 focus:outline-none "
           onChange={(e) => console.log(e.target.value)}
         />
       </div>
