@@ -11,6 +11,7 @@ import { useLocation } from 'react-router';
 import axios from 'axios';
 import plus from 'images/plus.png';
 import { useRecorder } from 'use-recorder';
+import BackBtn from 'components/BackBtn';
 
 interface mailForm {
   text: FormDataEntryValue;
@@ -231,7 +232,9 @@ function MailWritePage() {
         전송
       </button>
     </form>
-
+    <div className="absolute top-3 right-3">
+              <BackBtn />
+            </div>
     <ResultModal openinit={modalOC} closeModal={() => setModalOC(false)} id={state[0]} />
   </div>
   );

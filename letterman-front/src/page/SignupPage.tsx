@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRef, useState, useCallback } from 'react';
 import profile from 'images/profile.png';
 import star from 'images/star.svg';
+import BackBtn from 'components/BackBtn';
 
 interface SignUpInfo {
   username: FormDataEntryValue | null;
@@ -267,7 +268,9 @@ function SignupPage() {
                       />
                     </label>
                   </div>
-
+                  <div className="absolute top-3 right-3">
+              <BackBtn />
+            </div>
                   <div className="my-8 flex justify-end">
                     <button type="submit" className="mr-5">
                       <p className="text-white text-3xl p-2">다음 &#62;</p>

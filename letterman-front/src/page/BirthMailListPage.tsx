@@ -5,6 +5,7 @@ import ColorSystem from 'utils/ColorSystem';
 import { useState, useEffect } from 'react';
 import MoreButton from 'components/MailList/MoreButton';
 import { getUUID } from 'utils/getUUID';
+import BackBtn from 'components/BackBtn';
 
 function BirthMailListPage() {
   const [mailList, setMailList] = useState([]); // <any[]>
@@ -68,6 +69,9 @@ function BirthMailListPage() {
     className="font-press-start flex justify-center items-center flex-col "
     style={{ backgroundColor: ColorSystem.MainColor.Primary }}
   >
+                <div className="absolute top-3 right-3">
+              <BackBtn />
+            </div>
     <span className="text-white m-14 text-4xl">총 {mailCount}개의 편지를 받았습니다.</span>
 
     {Object.values(mailList)?.map((item: any) => (
