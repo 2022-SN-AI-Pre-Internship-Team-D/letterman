@@ -73,7 +73,7 @@ function LoginPage() {
 
   return (
     <div className=" font-press-start text-2xl absolute overflow-hidden w-screen h-full bg-[#0E1733] flex justify-center flex-col items-center">
-      <img src={star} alt="star" className="absolute bg-repeat" />
+      <img src={star} alt="star" className="absolute bg-repeat h-screen" />
       <div style={{ marginLeft: '60px' }} className="flex">
         <h4 className=" text-[#9CA6C5] text-5xl  text-center ">LOGIN</h4>
         <img style={{ position: 'relative', right: '20px', bottom: '10px' }} src={pencilImg} alt="pencil" />

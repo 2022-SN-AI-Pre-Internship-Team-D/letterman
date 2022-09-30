@@ -160,7 +160,7 @@ function SignupPage() {
     className="font-press-start text-2xl absolute overflow-hidden w-screen h-screen flex justify-center"
     style={{ backgroundColor: ColorSystem.MainColor.Primary }}
   >
-    <img src={star} alt="star" className="z-10 absolute bg-repeat " />
+    <img src={star} alt="star" className="z-10 absolute bg-repeat h-screen" />
     <div className="z-30 flex flex-col justify-center h-screen item-center">
       <div
         className=" text-white border-solid border-2 rounded-lg flex flex-col 
