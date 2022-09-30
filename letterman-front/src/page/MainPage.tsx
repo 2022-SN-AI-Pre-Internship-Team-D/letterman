@@ -136,7 +136,7 @@ function MainPage() {
       </Link>
     </div>
     {/* 편지 */}
-    <div className="flex flex-col absolute top-0 left-5 w-28 md:m-10  md:w-28 lg:w-1/12">
+    <div className="flex flex-col absolute top-7 left-5 w-28 md:m-10  md:w-28 lg:w-1/12">
       <button onClick={handleBirthClick} type="button" className="scaleup">
         <img src="images/letterimg.png" alt="a" />
       </button>
@@ -168,7 +168,7 @@ function MainPage() {
       </button>
     </div>
     {/* 링크 공유 */}
-    <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-4 right-4 w-10 ">
+    <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-8 right-8 w-10 ">
       <button
         onClick={() => {
           handleCopyClipBoard(`http://localhost/mainpage2${uuid}`);
