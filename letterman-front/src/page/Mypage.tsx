@@ -124,7 +124,7 @@ function MyPage() {
   return (
     <div className="font-press-start text-xl absolute overflow-hidden pt-20 md:pt-10 bg-[#0E1733] flex justify-center w-screen h-screen items-center">
     <img src={star} alt="star" className="absolute bg-repeat " />
-    <div className="  text-white bor border-solid border-2 rounded-lg w-4/6 h-4/5 flex flex-col items-center justify-center">
+    <div className="mt-10 text-white bor border-solid border-2 rounded-lg w-4/6 h-4/5 flex flex-col items-center justify-center">
       <img
         style={{ position: 'absolute', top: '70px' }}
         className="h-36 w-36 object-cover text-white border rounded-full"

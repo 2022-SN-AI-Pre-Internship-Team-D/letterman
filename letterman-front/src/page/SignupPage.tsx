@@ -157,132 +157,133 @@ function SignupPage() {
 
   return (
     <div
-      className="font-press-start text-2xl absolute overflow-hidden w-screen h-screen flex justify-center"
-      style={{ backgroundColor: ColorSystem.MainColor.Primary }}
-    >
-      <img src={star} alt="star" className="z-10 absolute bg-repeat " />
-      <div className="z-30 flex flex-col justify-center h-screen item-center">
-        <div
-          className=" text-white border-solid border-2 rounded-lg flex flex-col 
-      items-center justify-center"
-          style={{ height: '50rem', width: '70rem' }}
-        >
-          <div className="flex justify-center mt-3 mb-14 text-white text-5xl">
-            <span>회원가입</span>
+    className="font-press-start text-2xl absolute overflow-hidden w-screen h-screen flex justify-center"
+    style={{ backgroundColor: ColorSystem.MainColor.Primary }}
+  >
+    <img src={star} alt="star" className="z-10 absolute bg-repeat " />
+    <div className="z-30 flex flex-col justify-center h-screen item-center">
+      <div
+        className=" text-white border-solid border-2 rounded-lg flex flex-col 
+    items-center justify-center"
+        style={{ height: '50rem', width: '70rem' }}
+      >
+        <div className="flex justify-center mt-3 mb-0 md:mb-14 text-white text-5xl">
+          <span>회원가입</span>{' '}
+          <div className="absolute top-3 right-3">
+            <BackBtn />
           </div>
+        </div>
 
-          <form onSubmit={handleSignUp}>
-            <div className="mt-2">
-              <div className="flex md:flex-row flex-col justify-center">
-                <div className="flex justify-center items-center mr-10 ml-10 md:pb-28 pb-5">
-                  <div className="preview">
-                    <label htmlFor="profile">
-                      {imageUrl && (
-                        <img
-                          src={imageUrl}
-                          alt="profile"
-                          className="object-cover w-80 h-80 md:w-80 cursor-pointer flex flex-col justify-center items-center 
-                      rounded-full border-4 border-[#677DC6] bg-white"
-                        />
-                      )}
-                      <input
-                        onChange={handleChangeFile}
-                        id="profile"
-                        className="hidden"
-                        ref={imgRef}
-                        type="file"
-                        name="image"
-                        accept="image/*"
+        <form onSubmit={handleSignUp}>
+          <div className="mt-2">
+            <div className="flex md:flex-row flex-col justify-center">
+              <div className="flex justify-center items-center mr-10 ml-10 md:pb-28 pb-5">
+                <div className="preview">
+                  <label htmlFor="profile">
+                    {imageUrl && (
+                      <img
+                        src={imageUrl}
+                        alt="profile"
+                        className="object-cover w-32 h-32 md:h-80 md:w-80 cursor-pointer flex flex-col justify-center items-center 
+                    rounded-full border-4 border-[#677DC6] bg-white"
                       />
-                    </label>
-                  </div>
+                    )}
+                    <input
+                      onChange={handleChangeFile}
+                      id="profile"
+                      className="hidden"
+                      ref={imgRef}
+                      type="file"
+                      name="image"
+                      accept="image/*"
+                    />
+                  </label>
                 </div>
+              </div>
 
-                <div className="ml-10 flex flex-col justify-end  ">
-                  <div className="">
-                    <label className="m-1.5 text-white flex flex-row" htmlFor="nickname">
-                      <span className="ml-6 my-4">닉네임</span>
-                      <div className="flex flex-col">
-                        <input
-                          className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
-                          name="username"
-                          onChange={onChangeName}
-                        />
-                        {name.length > 0 && (
-                          <span className={`message ${isName ? 'success' : 'error'} ml-10`}>{nameMessage}</span>
-                        )}
-                      </div>
-                    </label>
-                  </div>
-                  <div>
-                    <label className="m-1.5 text-white flex flex-row" htmlFor="email">
-                      <span className="ml-6 my-4">이메일</span>
-                      <div className="flex flex-col">
-                        <input
-                          className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
-                          name="email"
-                          onChange={onChangeEmail}
-                        />
-                        {email.length > 0 && (
-                          <span className={`message ${isEmail ? 'success' : 'error'} ml-10`}>{emailMessage}</span>
-                        )}
-                      </div>
-                    </label>
-                  </div>
-                  <div>
-                    <label className="m-1.5 text-white" htmlFor="password">
-                      <span className="ml-4 my-4">비밀번호</span>
+              <div className="ml-10 flex flex-col justify-end  ">
+                <div className="">
+                  <label className="m-1.5 text-white flex flex-row" htmlFor="nickname">
+                    <span className="ml-6 my-4">닉네임</span>
+                    <div className="flex flex-col">
+                      <input
+                        className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
+                        name="username"
+                        onChange={onChangeName}
+                      />
+                      {name.length > 0 && (
+                        <span className={`message ${isName ? 'success' : 'error'} ml-10`}>{nameMessage}</span>
+                      )}
+                    </div>
+                  </label>
+                </div>
+                <div>
+                  <label className="m-1.5 text-white flex flex-row" htmlFor="email">
+                    <span className="ml-6 my-4">이메일</span>
+                    <div className="flex flex-col">
+                      <input
+                        className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
+                        name="email"
+                        onChange={onChangeEmail}
+                      />
+                      {email.length > 0 && (
+                        <span className={`message ${isEmail ? 'success' : 'error'} ml-10`}>{emailMessage}</span>
+                      )}
+                    </div>
+                  </label>
+                </div>
+                <div>
+                  <label className="m-1.5 text-white" htmlFor="password">
+                    <span className="ml-4 my-4">비밀번호</span>
+                    <input
+                      className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
+                      type="password"
+                      name="password"
+                      onChange={onChangePassword}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label className="m-1.5 text-white flex flex-row" htmlFor="passwordcheck">
+                    <span className="ml-3 my-4 ">비번확인</span>
+                    <div className="flex flex-col">
                       <input
                         className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
                         type="password"
-                        name="password"
-                        onChange={onChangePassword}
+                        name="password2"
+                        onChange={onChangePasswordConfirm}
                       />
-                    </label>
-                  </div>
-                  <div>
-                    <label className="m-1.5 text-white flex flex-row" htmlFor="passwordcheck">
-                      <span className="ml-3 my-4 ">비번확인</span>
-                      <div className="flex flex-col">
-                        <input
-                          className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
-                          type="password"
-                          name="password2"
-                          onChange={onChangePasswordConfirm}
-                        />
-                        {passwordConfirm.length > 0 && (
-                          <span className={`message ${isPasswordConfirm ? 'success' : 'error'} ml-10`}>
-                            {passwordConfirmMessage}
-                          </span>
-                        )}
-                      </div>
-                    </label>
-                  </div>
-                  <div>
-                    <label className="m-1.5 text-white" htmlFor="birthday">
-                      <span className="ml-9 my-4">생일</span>
-                      <input
-                        className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
-                        type="date"
-                        name="birth"
-                      />
-                    </label>
-                  </div>
-                  <div className="absolute top-3 right-3">
-              <BackBtn />
-            </div>
-                  <div className="my-8 flex justify-end">
-                    <button type="submit" className="mr-5">
-                      <p className="text-white text-3xl p-2">다음 &#62;</p>
-                    </button>
-                  </div>
+                      {passwordConfirm.length > 0 && (
+                        <span className={`message ${isPasswordConfirm ? 'success' : 'error'} ml-10`}>
+                          {passwordConfirmMessage}
+                        </span>
+                      )}
+                    </div>
+                  </label>
+                </div>
+                <div>
+                  <label className="m-1.5 text-white" htmlFor="birthday">
+                    <span className="ml-9 my-4">생일</span>
+                    <input
+                      className="border-4 border-[#677DC6] md:w-96 w-64 mx-5 my-2 px-2.5 py-2.5 rounded-2xl text-background"
+                      type="date"
+                      name="birth"
+                    />
+                  </label>
+                </div>
+
+                <div className="my-8 flex justify-end">
+                  <button type="submit" className="mr-5">
+                    <p className="text-white text-3xl p-2">다음 &#62;</p>
+                  </button>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
   );
 }
 export default SignupPage;
