@@ -89,31 +89,31 @@ function MyPage() {
             console.log(error);
           });
       })();
-    });
+      
+      // 추석
+      (async () => {
+        await axios
+          .get(`api/v1/letters/users/${uuid}/events/${arrEvent[3]}/counts`)
+          .then((res) => {
+            setChuseok(res.data[0].count);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })();
 
-    // 추석
-    (async () => {
-      await axios
-        .get(`api/v1/letters/users/${uuid}/events/${arrEvent[3]}/counts`)
-        .then((res) => {
-          setChuseok(res.data[0].count);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    })();
-
-    // 어린이날
-    (async () => {
-      await axios
-        .get(`api/v1/letters/users/${uuid}/events/${arrEvent[4]}/counts`)
-        .then((res) => {
-          setChildren(res.data[0].count);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    })();
+      // 어린이날
+      (async () => {
+        await axios
+          .get(`api/v1/letters/users/${uuid}/events/${arrEvent[4]}/counts`)
+          .then((res) => {
+            setChildren(res.data[0].count);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })();
+    });  
   }, []);
 
   const navigate = useNavigate();
