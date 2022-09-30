@@ -148,7 +148,7 @@ docker-compose -f docker-compose.prod.yml up --build
 <summary>Swagger</summary>
 <div markdown="1">
 <br>
-<img src="https://user-images.githubusercontent.com/97827316/192817400-72c4c11c-4f68-4d17-a1b7-52256f63d589.png">
+<img src="https://user-images.githubusercontent.com/105929978/193312033-15104411-8ff0-456f-a1b5-7828ebcc1f7e.png">
 </div>
 </details>
 <hr>
