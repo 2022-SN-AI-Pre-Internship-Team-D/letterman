@@ -4,6 +4,10 @@
 
 소중한 사람들과 편지를 주고받으며 기록하며 공유할 수 있는 서비스
 
+[www.letterman.life](www.letterman.life)
+
+[letterman medium](https://medium.com/@michelle0113/letterman-web-project-7f19b04db186)
+
 ---
 
 <!-- 목차  -->
@@ -74,7 +78,7 @@
   <br>
   또한 이 페이지에서 아이콘을 클릭하면 받은 편지를 확인할 수 있습니다.
 
-<br><br>
+<br>
 
 - 편지를 작성하는 사람의 메인페이지
 <p align="center">
@@ -114,7 +118,7 @@
     <img src="https://user-images.githubusercontent.com/105929978/193308171-d2aa94cd-7765-4918-9340-6aa048e094f1.gif">
   </p>
     우측 상단의 공유버튼을 클릭하면 원하는 편지를 다운받을 수 있습니다.
-    <br>
+<br>
 
 ---
 
