@@ -4,7 +4,7 @@
 
 소중한 사람들과 편지를 주고받으며 기록하며 공유할 수 있는 서비스
 
-[www.letterman.life](www.letterman.life)
+[www.letterman.life](http://letterman.life)
 
 [letterman medium](https://medium.com/@michelle0113/letterman-web-project-7f19b04db186)
 
