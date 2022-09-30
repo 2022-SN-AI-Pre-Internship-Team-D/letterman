@@ -7,32 +7,29 @@ function useCopyClipBoard(): [boolean, onCopyFn] {
 
   const onCopy: onCopyFn = async (text: string) => {
     if (navigator.clipboard !== undefined) {
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
-          console.log("text가 복사됨")
-        });
-        return true;
-    } else {
-      // execCommand 사용
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      textArea.setSelectionRange(0, 99999);
-      try {
-        document.execCommand('copy');
-        setIsCopy(true);
-      } catch (err) {
-        console.error('복사 실패', err);
-        setIsCopy(false);
-      }
-      textArea.setSelectionRange(0, 0);
-      document.body.removeChild(textArea);
-      console.log("text가 복사됨")
-
+      navigator.clipboard.writeText(text).then(() => {
+        console.log('text가 복사됨');
+      });
       return true;
     }
+    // execCommand 사용
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    textArea.setSelectionRange(0, 99999);
+    try {
+      document.execCommand('copy');
+      setIsCopy(true);
+    } catch (err) {
+      console.error('복사 실패', err);
+      setIsCopy(false);
+    }
+    textArea.setSelectionRange(0, 0);
+    document.body.removeChild(textArea);
+    console.log('text가 복사됨');
+
+    return true;
 
     // try {
     //   await window.navigator.clipboard.writeText(text);
@@ -46,15 +43,9 @@ function useCopyClipBoard(): [boolean, onCopyFn] {
 
     //   return false;
     // }
-
-    
   };
 
   return [isCopy, onCopy];
-
-  
-  
-
 }
 
 export default useCopyClipBoard;
