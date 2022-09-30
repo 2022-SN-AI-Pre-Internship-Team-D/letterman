@@ -63,9 +63,9 @@ function MainPage() {
 
   const handleCopyClipBoard = (text: string) => {
     onCopy(text);
-    if (isCopy === false) {
-      navigate(`/mainpage2${uuid}`);
-    }
+    // if (isCopy === false) {
+    //   navigate(`/mainpage2${uuid}`);
+    // }
   };
 
   const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
