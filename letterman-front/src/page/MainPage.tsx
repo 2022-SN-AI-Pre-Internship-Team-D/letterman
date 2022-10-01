@@ -67,8 +67,8 @@ function MainPage() {
   //     navigate(`/mainpage2${uuid}`);
   //   }
   // };
-  const handleCopyClipBoard = () => {
-    navigate(`/mainpage2${uuid}`);
+  const test = () => {
+    alert(`http://www.letterman.life//mainpage2${uuid}`);
   };
 
   const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
@@ -173,10 +173,10 @@ function MainPage() {
     {/* 링크 공유 */}
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-8 right-8 w-10 ">
       <button
-        onClick={() => {
-          handleCopyClipBoard();
+        onClick={
+          test()
           // alert('링크가 복사되었습니다!');
-        }}
+        }
         type="button"
         className="scaleup"
       >
