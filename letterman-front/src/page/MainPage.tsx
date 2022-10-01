@@ -61,11 +61,14 @@ function MainPage() {
     setIsHovering(false);
   };
 
-  const handleCopyClipBoard = (text: string) => {
-    onCopy(text);
-    if (isCopy === false) {
-      navigate(`/mainpage2${uuid}`);
-    }
+  // const handleCopyClipBoard = (text: string) => {
+  //   onCopy(text);
+  //   if (isCopy === false) {
+  //     navigate(`/mainpage2${uuid}`);
+  //   }
+  // };
+  const handleCopyClipBoard = () => {
+    navigate(`/mainpage2${uuid}`);
   };
 
   const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
@@ -171,7 +174,7 @@ function MainPage() {
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="flex absolute top-8 right-8 w-10 ">
       <button
         onClick={() => {
-          handleCopyClipBoard(`http://localhost/mainpage2${uuid}`);
+          handleCopyClipBoard();
           // alert('링크가 복사되었습니다!');
         }}
         type="button"
